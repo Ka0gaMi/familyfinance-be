@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="create_finance_table" author="kornelijus.semenas">
+        <createTable tableName="finance">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="date" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="finance_type_fk"
+                             references="types(id)"/>
+            </column>
+            <column name="expected_expenses_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="finance_expected_expenses_fk"
+                             references="expected_expenses(id)"/>
+            </column>
+            <column name="actual_expenses_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="finance_actual_expenses_fk"
+                             references="actual_expenses(id)"/>
+            </column>
+            <column name="income_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="finance_income_fk"
+                             references="income(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

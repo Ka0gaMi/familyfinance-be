@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://20.23.171.40:5432/sports-tournaments?currentSchema=sports
+    username: sports-tournaments
+    password:  yyg3tdry
+  liquibase:
+    changeLog: classpath:/db/changelog/liquibase-changelog.xml

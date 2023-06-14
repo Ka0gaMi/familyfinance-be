@@ -1,0 +1,80 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'org.liquibase.gradle' version '2.0.4'
+    id 'checkstyle'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+checkstyle {
+    toolVersion = '10.3'
+}
+
+checkstyleMain {
+    source = 'src/main/java'
+}
+
+checkstyleTest {
+    source = 'src/test/java'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    postgresqlVersion = '42.4.3'
+    liquibaseCoreVersion = '4.17.2'
+    liquibasePropsFile = 'src/main/resources/db.properties'
+    mybatisVersion = '3.0.1'
+}
+
+def props = new Properties()
+file(project.ext.liquibasePropsFile).withInputStream { props.load(it) }
+
+liquibase {
+    activities {
+        main {
+            changeLogFile props["datasource.change-log"]
+            url props["datasource.url"]
+            username props["datasource.username"]
+            password props["datasource.password"]
+            defaultSchemaName props["datasource.schema"]
+            classpath "$rootDir/src/main/resources"
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework:spring-context"
+
+    implementation "org.postgresql:postgresql:${postgresqlVersion}"
+    implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.4'
+
+    liquibaseRuntime "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+    liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:2.1.1"
+    liquibaseRuntime "org.postgresql:postgresql:${postgresqlVersion}"
+
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
