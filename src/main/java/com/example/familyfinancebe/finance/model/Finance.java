@@ -33,8 +33,4 @@ public class Finance {
     @JoinColumn(name = "actual_expenses_id")
     private ActualExpenses actualExpenses;
 
-    @OneToOne
-    @JoinColumn(name = "income_id")
-    private Income income;
-
 }

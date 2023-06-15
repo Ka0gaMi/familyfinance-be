@@ -10,5 +10,5 @@ public interface FinanceService {
     List<Finance> getFinanceByDate(String date);
 
     void addFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
-                    ActualExpenses actualExpenses, Income income);
+                    ActualExpenses actualExpenses);
 }

@@ -1,12 +1,14 @@
 package com.example.familyfinancebe.finance.controller;
 
 import com.example.familyfinancebe.finance.dto.FinanceDTO;
-import com.example.familyfinancebe.finance.model.*;
+import com.example.familyfinancebe.finance.dto.IncomeDTO;
+import com.example.familyfinancebe.finance.model.ActualExpenses;
+import com.example.familyfinancebe.finance.model.ExpectedExpenses;
+import com.example.familyfinancebe.finance.model.Type;
 import com.example.familyfinancebe.finance.service.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.YearMonth;
 import java.util.Map;
 
 @RestController
@@ -59,11 +61,28 @@ public class FinanceController {
             ActualExpenses actualExpenses = actualExpensesService
                     .createActualExpenses(financeDto.getActualExpenses());
 
-            Income income = incomeService.createIncome(financeDto.getIncome());
-
-            financeService.addFinance(financeDto, type, expectedExpenses, actualExpenses, income);
+            financeService.addFinance(financeDto, type, expectedExpenses, actualExpenses);
 
             return ResponseEntity.ok("Finance added successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/get_income")
+    public ResponseEntity<?> getIncomeByDate(@RequestParam String date) {
+        try {
+            return ResponseEntity.ok(incomeService.getIncomeByDate(date));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping("/add_income")
+    public ResponseEntity<?> addIncome(@RequestBody IncomeDTO incomeDTO) {
+        try {
+            incomeService.createIncome(incomeDTO);
+            return ResponseEntity.ok("Income added successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }

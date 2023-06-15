@@ -24,14 +24,13 @@ public class FinanceServiceImpl implements FinanceService{
 
     @Override
     public void addFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
-                           ActualExpenses actualExpenses, Income income) {
+                           ActualExpenses actualExpenses) {
         Finance finance = new Finance();
         finance.setId(UUID.fromString(financeDto.getId()));
         finance.setDate(financeDto.getDate());
         finance.setType(type);
         finance.setExpectedExpenses(expectedExpenses);
         finance.setActualExpenses(actualExpenses);
-        finance.setIncome(income);
         financeRepository.save(finance);
     }
 }

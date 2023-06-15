@@ -9,7 +9,22 @@
             <column name="id" type="uuid">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
+            <column name="date" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
             <column name="amount" type="currency">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notes" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+            <column name="expected_day" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_got" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false"/>
             </column>
         </createTable>

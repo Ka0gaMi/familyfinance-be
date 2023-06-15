@@ -24,10 +24,6 @@
                 <constraints nullable="false" foreignKeyName="finance_actual_expenses_fk"
                              references="actual_expenses(id)"/>
             </column>
-            <column name="income_id" type="uuid">
-                <constraints nullable="false" foreignKeyName="finance_income_fk"
-                             references="income(id)"/>
-            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
