@@ -34,4 +34,21 @@ public class IncomeServiceImpl implements IncomeService{
     public List<Income> getIncomeByDate(String date) {
         return incomeRepository.getIncomeByDate(date);
     }
+
+    @Override
+    public void updateIncome(IncomeDTO incomeDto) {
+        Income income = incomeRepository.getIncomeById(UUID.fromString(incomeDto.getId()));
+        income.setAmount(incomeDto.getAmount());
+        income.setDate(incomeDto.getDate());
+        income.setName(incomeDto.getName());
+        income.setNotes(incomeDto.getNotes());
+        income.setExpectedDay(incomeDto.getExpectedDay());
+        income.setIsGot(incomeDto.getIsGot());
+        incomeRepository.save(income);
+    }
+
+    @Override
+    public void deleteIncome(String id) {
+        incomeRepository.deleteById(UUID.fromString(id));
+    }
 }

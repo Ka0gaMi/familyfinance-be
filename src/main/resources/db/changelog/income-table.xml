@@ -27,6 +27,8 @@
             <column name="is_got" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false"/>
             </column>
+            <column name="index" type="integer" autoIncrement="true">
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

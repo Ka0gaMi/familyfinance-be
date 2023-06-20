@@ -11,4 +11,9 @@ public interface FinanceService {
 
     void addFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
                     ActualExpenses actualExpenses);
+
+    void updateFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
+                       ActualExpenses actualExpenses);
+
+    void deleteFinance(String id);
 }

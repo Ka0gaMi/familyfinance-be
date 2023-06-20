@@ -5,5 +5,9 @@ import com.example.familyfinancebe.finance.model.ActualExpenses;
 
 public interface ActualExpensesService {
 
-    public ActualExpenses createActualExpenses(ActualExpensesDTO actualExpensesDto);
+    ActualExpenses createActualExpenses(ActualExpensesDTO actualExpensesDto);
+
+    ActualExpenses updateActualExpenses(ActualExpensesDTO actualExpensesDto);
+
+    void deleteActualExpenses(String id);
 }

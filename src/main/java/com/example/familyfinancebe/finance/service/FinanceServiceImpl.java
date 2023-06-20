@@ -33,4 +33,20 @@ public class FinanceServiceImpl implements FinanceService{
         finance.setActualExpenses(actualExpenses);
         financeRepository.save(finance);
     }
+
+    @Override
+    public void updateFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
+                              ActualExpenses actualExpenses) {
+        Finance finance = financeRepository.getFinanceById(UUID.fromString(financeDto.getId()));
+        finance.setDate(financeDto.getDate());
+        finance.setType(type);
+        finance.setExpectedExpenses(expectedExpenses);
+        finance.setActualExpenses(actualExpenses);
+        financeRepository.save(finance);
+    }
+
+    @Override
+    public void deleteFinance(String id) {
+        financeRepository.deleteById(UUID.fromString(id));
+    }
 }

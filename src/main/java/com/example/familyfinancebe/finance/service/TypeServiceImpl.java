@@ -24,8 +24,20 @@ public class TypeServiceImpl implements TypeService{
     }
 
     @Override
-    public void updateType(String name, String typeId) {
-        Type type = typeRepository.findById(UUID.fromString(typeId)).orElseThrow(
+    public Type getType(String name) {
+        return typeRepository.findByName(name);
+    }
+
+    @Override
+    public Type getTypeById(String id) {
+        return typeRepository.findById(UUID.fromString(id)).orElseThrow(
+                () -> new RuntimeException("Type not found")
+        );
+    }
+
+    @Override
+    public void updateType(String name, UUID typeId) {
+        Type type = typeRepository.findById(typeId).orElseThrow(
                 () -> new RuntimeException("Type not found")
         );
         type.setName(name);
@@ -33,7 +45,7 @@ public class TypeServiceImpl implements TypeService{
     }
 
     @Override
-    public Type getType(String name) {
-        return typeRepository.findByName(name);
+    public void deleteType(String id) {
+        typeRepository.deleteById(UUID.fromString(id));
     }
 }

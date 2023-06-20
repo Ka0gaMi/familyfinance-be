@@ -24,4 +24,18 @@ public class ExpectedExpensesServiceImpl implements ExpectedExpensesService{
         expectedExpensesRepository.save(expectedExpenses);
         return expectedExpenses;
     }
+
+    @Override
+    public ExpectedExpenses updateExpectedExpenses(ExpectedExpensesDTO expectedExpensesDto) {
+        ExpectedExpenses expectedExpenses = expectedExpensesRepository
+                .getExpectedExpensesById(UUID.fromString(expectedExpensesDto.getId()));
+        expectedExpenses.setAmount(expectedExpensesDto.getAmount());
+        expectedExpensesRepository.save(expectedExpenses);
+        return expectedExpenses;
+    }
+
+    @Override
+    public void deleteExpectedExpenses(String id) {
+        expectedExpensesRepository.deleteById(UUID.fromString(id));
+    }
 }

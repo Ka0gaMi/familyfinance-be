@@ -2,11 +2,17 @@ package com.example.familyfinancebe.finance.service;
 
 import com.example.familyfinancebe.finance.model.Type;
 
+import java.util.UUID;
+
 public interface TypeService {
 
-    public Type createType(String name, String typeId);
+    Type createType(String name, String typeId);
 
-    public void updateType(String name, String typeId);
+    Type getType(String name);
 
-    public Type getType(String name);
+    Type getTypeById(String id);
+
+    void updateType(String name, UUID typeId);
+
+    void deleteType(String id);
 }

@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface FinanceRepository extends JpaRepository<Finance, UUID> {
 
     List<Finance> findByDate(String date);
+
+    Finance getFinanceById(UUID id);
 }

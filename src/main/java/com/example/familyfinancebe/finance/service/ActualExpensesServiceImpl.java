@@ -24,4 +24,18 @@ public class ActualExpensesServiceImpl implements ActualExpensesService{
         actualExpensesRepository.save(actualExpenses);
         return actualExpenses;
     }
+
+    @Override
+    public ActualExpenses updateActualExpenses(ActualExpensesDTO actualExpensesDto) {
+        ActualExpenses actualExpenses = actualExpensesRepository
+                .getActualExpensesById(UUID.fromString(actualExpensesDto.getId()));
+        actualExpenses.setAmount(actualExpensesDto.getAmount());
+        actualExpensesRepository.save(actualExpenses);
+        return actualExpenses;
+    }
+
+    @Override
+    public void deleteActualExpenses(String id) {
+        actualExpensesRepository.deleteById(UUID.fromString(id));
+    }
 }

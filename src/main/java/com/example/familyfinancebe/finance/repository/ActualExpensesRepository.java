@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface ActualExpensesRepository extends JpaRepository<ActualExpenses, UUID> {
+    ActualExpenses getActualExpensesById(UUID id);
 }

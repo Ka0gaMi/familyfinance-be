@@ -10,4 +10,8 @@ public interface IncomeService {
     void createIncome(IncomeDTO incomeDto);
 
     List<Income> getIncomeByDate(String date);
+
+    void updateIncome(IncomeDTO incomeDto);
+
+    void deleteIncome(String id);
 }
