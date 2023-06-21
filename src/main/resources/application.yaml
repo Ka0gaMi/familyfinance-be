@@ -2,7 +2,5 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url:
-    username: sports-tournaments
-    password:
   liquibase:
     changeLog: classpath:/db/changelog/liquibase-changelog.xml

@@ -21,11 +21,8 @@ jobs:
         with:
           java-version: '17'
 
-      - name: Setup Gradle
-        run: gradle/gradle-build-action@v2
-
-      - name: Build with Gradle
-        run: /.gradlew build
+      - name: Setup gradle
+        run:
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
