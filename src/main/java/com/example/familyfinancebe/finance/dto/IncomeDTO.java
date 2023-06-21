@@ -14,7 +14,7 @@ public class IncomeDTO {
 
     private String notes;
 
-    private Integer expectedDay;
+    private String expectedDay;
 
     private Boolean isGot;
 }

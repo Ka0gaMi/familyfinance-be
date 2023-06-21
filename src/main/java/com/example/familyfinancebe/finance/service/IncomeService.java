@@ -11,6 +11,8 @@ public interface IncomeService {
 
     List<Income> getIncomeByDate(String date);
 
+    List<Income> getDefaultIncome(String date);
+
     void updateIncome(IncomeDTO incomeDto);
 
     void deleteIncome(String id);

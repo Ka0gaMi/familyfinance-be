@@ -35,7 +35,7 @@ public class Income {
     private String notes;
 
     @Column
-    private Integer expectedDay;
+    private String expectedDay;
 
     @Column
     private Boolean isGot;

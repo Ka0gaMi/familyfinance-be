@@ -2,8 +2,6 @@ package com.example.familyfinancebe.finance.controller;
 
 import com.example.familyfinancebe.finance.dto.FinanceDTO;
 import com.example.familyfinancebe.finance.dto.IncomeDTO;
-import com.example.familyfinancebe.finance.model.ActualExpenses;
-import com.example.familyfinancebe.finance.model.ExpectedExpenses;
 import com.example.familyfinancebe.finance.model.Type;
 import com.example.familyfinancebe.finance.service.*;
 import org.springframework.http.ResponseEntity;
@@ -20,18 +18,12 @@ public class FinanceController {
 
     private final IncomeService incomeService;
 
-    private final ActualExpensesService actualExpensesService;
-
-    private final ExpectedExpensesService expectedExpensesService;
-
     private final TypeService typeService;
 
-    public FinanceController(FinanceService financeService, IncomeService incomeService, ActualExpensesService actualExpensesService,
-                             ExpectedExpensesService expectedExpensesService, TypeService typeService) {
+    public FinanceController(FinanceService financeService, IncomeService incomeService,
+                             TypeService typeService) {
         this.financeService = financeService;
         this.incomeService = incomeService;
-        this.actualExpensesService = actualExpensesService;
-        this.expectedExpensesService = expectedExpensesService;
         this.typeService = typeService;
     }
 
@@ -55,13 +47,7 @@ public class FinanceController {
                 type = typeService.createType(name, typeId);
             }
 
-            ExpectedExpenses expectedExpenses = expectedExpensesService
-                    .createExpectedExpenses(financeDto.getExpectedExpenses());
-
-            ActualExpenses actualExpenses = actualExpensesService
-                    .createActualExpenses(financeDto.getActualExpenses());
-
-            financeService.addFinance(financeDto, type, expectedExpenses, actualExpenses);
+            financeService.addFinance(financeDto, type);
 
             return ResponseEntity.ok("Finance added successfully");
         } catch (Exception e) {
@@ -82,13 +68,7 @@ public class FinanceController {
                 typeService.updateType(financeDto.getType().getName(), type.getId());
             }
 
-            ExpectedExpenses expectedExpenses = expectedExpensesService
-                    .updateExpectedExpenses(financeDto.getExpectedExpenses());
-
-            ActualExpenses actualExpenses = actualExpensesService
-                    .updateActualExpenses(financeDto.getActualExpenses());
-
-            financeService.updateFinance(financeDto, type, expectedExpenses, actualExpenses);
+            financeService.updateFinance(financeDto, type);
 
             return ResponseEntity.ok("Finance updated successfully");
         } catch (Exception e) {
@@ -101,8 +81,6 @@ public class FinanceController {
         try {
             financeService.deleteFinance(financeDto.getId());
             typeService.deleteType(financeDto.getType().getId());
-            expectedExpensesService.deleteExpectedExpenses(financeDto.getExpectedExpenses().getId());
-            actualExpensesService.deleteActualExpenses(financeDto.getActualExpenses().getId());
             return ResponseEntity.ok("Finance deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
@@ -143,6 +121,24 @@ public class FinanceController {
         try {
             incomeService.deleteIncome(id);
             return ResponseEntity.ok("Income deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/get_default_finance")
+    public ResponseEntity<?> getDefaultFinance(@RequestParam String date) {
+        try {
+            return ResponseEntity.ok(financeService.getDefaultFinance(date));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/get_default_income")
+    public ResponseEntity<?> getDefaultIncome(@RequestParam String date) {
+        try {
+            return ResponseEntity.ok(incomeService.getDefaultIncome(date));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }

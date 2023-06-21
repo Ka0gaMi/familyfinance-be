@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 import java.util.UUID;
 
@@ -25,12 +26,10 @@ public class Finance {
     @JoinColumn(name = "type_id")
     private Type type;
 
-    @OneToOne
-    @JoinColumn(name = "expected_expenses_id")
-    private ExpectedExpenses expectedExpenses;
+    @Column
+    private Double expectedExpensesAmount;
 
-    @OneToOne
-    @JoinColumn(name = "actual_expenses_id")
-    private ActualExpenses actualExpenses;
+    @Column
+    private Double actualExpensesAmount;
 
 }

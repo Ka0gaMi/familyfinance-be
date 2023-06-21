@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="insert_finance_table" author="kornelijus.semenas">
+        <insert tableName="finance">
+            <column name="id" value="11111111-1111-1111-1111-111111111111" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000000" />
+            <column name="expected_expenses_amount" value="620" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="22222222-2222-2222-2222-222222222222" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000001" />
+            <column name="expected_expenses_amount" value="100" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="33333333-3333-3333-3333-333333333333" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000002" />
+            <column name="expected_expenses_amount" value="95" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="44444444-4444-4444-4444-444444444444" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000003" />
+            <column name="expected_expenses_amount" value="22.4" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="55555555-5555-5555-5555-555555555555" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000004" />
+            <column name="expected_expenses_amount" value="14.99" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="66666666-6666-6666-6666-666666666666" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000005" />
+            <column name="expected_expenses_amount" value="11.99" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="77777777-7777-7777-7777-777777777777" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000006" />
+            <column name="expected_expenses_amount" value="110" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="88888888-8888-8888-8888-888888888888" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000007" />
+            <column name="expected_expenses_amount" value="100" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="99999999-9999-9999-9999-999999999999" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000008" />
+            <column name="expected_expenses_amount" value="100" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+        <insert tableName="finance">
+            <column name="id" value="00000000-0000-0000-0000-000000000000" />
+            <column name="date" value="default" />
+            <column name="type_id" value="00000000-0000-0000-0000-000000000009" />
+            <column name="expected_expenses_amount" value="13.75" />
+            <column name="actual_expenses_amount" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -16,13 +16,11 @@
                 <constraints nullable="false" foreignKeyName="finance_type_fk"
                              references="types(id)"/>
             </column>
-            <column name="expected_expenses_id" type="uuid">
-                <constraints nullable="false" foreignKeyName="finance_expected_expenses_fk"
-                             references="expected_expenses(id)"/>
+            <column name="expected_expenses_amount" type="currency">
+                <constraints nullable="false"/>
             </column>
-            <column name="actual_expenses_id" type="uuid">
-                <constraints nullable="false" foreignKeyName="finance_actual_expenses_fk"
-                             references="actual_expenses(id)"/>
+            <column name="actual_expenses_amount" type="currency">
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>

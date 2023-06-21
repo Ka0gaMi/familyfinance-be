@@ -36,6 +36,23 @@ public class IncomeServiceImpl implements IncomeService{
     }
 
     @Override
+    public List<Income> getDefaultIncome(String date) {
+        List<Income> defaultIncome = incomeRepository.getIncomeByDate("default");
+        for (Income income : defaultIncome) {
+            Income newIncome = new Income();
+            newIncome.setId(UUID.randomUUID());
+            newIncome.setAmount(income.getAmount());
+            newIncome.setDate(date);
+            newIncome.setName(income.getName());
+            newIncome.setNotes(income.getNotes());
+            newIncome.setExpectedDay(income.getExpectedDay());
+            newIncome.setIsGot(income.getIsGot());
+            incomeRepository.save(newIncome);
+        }
+        return incomeRepository.getIncomeByDate(date);
+    }
+
+    @Override
     public void updateIncome(IncomeDTO incomeDto) {
         Income income = incomeRepository.getIncomeById(UUID.fromString(incomeDto.getId()));
         income.setAmount(incomeDto.getAmount());

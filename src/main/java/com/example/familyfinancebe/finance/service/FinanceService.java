@@ -9,11 +9,11 @@ public interface FinanceService {
 
     List<Finance> getFinanceByDate(String date);
 
-    void addFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
-                    ActualExpenses actualExpenses);
+    List<Finance> getDefaultFinance(String date);
 
-    void updateFinance(FinanceDTO financeDto, Type type, ExpectedExpenses expectedExpenses,
-                       ActualExpenses actualExpenses);
+    void addFinance(FinanceDTO financeDto, Type type);
+
+    void updateFinance(FinanceDTO financeDto, Type type);
 
     void deleteFinance(String id);
 }

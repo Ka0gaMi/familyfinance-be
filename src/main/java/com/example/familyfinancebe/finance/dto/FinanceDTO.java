@@ -10,9 +10,9 @@ public class FinanceDTO {
 
     private TypeDTO type;
 
-    private ExpectedExpensesDTO expectedExpenses;
+    private Double expectedExpensesAmount;
 
-    private ActualExpensesDTO actualExpenses;
+    private Double actualExpensesAmount;
 
     private IncomeDTO income;
 }

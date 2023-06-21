@@ -5,9 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
     <include file="types.xml" relativeToChangelogFile="true"/>
-    <include file="expected-expenses-table.xml" relativeToChangelogFile="true"/>
-    <include file="actual-expenses-table.xml" relativeToChangelogFile="true"/>
     <include file="income-table.xml" relativeToChangelogFile="true"/>
     <include file="finance-table.xml" relativeToChangelogFile="true"/>
     <include file="insert-types.xml" relativeToChangelogFile="true"/>
+    <include file="insert-finance.xml" relativeToChangelogFile="true"/>
+    <include file="insert-income.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
