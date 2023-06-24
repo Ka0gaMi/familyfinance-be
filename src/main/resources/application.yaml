@@ -1,6 +1,8 @@
 spring:
   datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/familyfinance
     driver-class-name: org.postgresql.Driver
-    url:
   liquibase:
-    changeLog: classpath:/db/changelog/liquibase-changelog.xml
+    change-log: classpath:/db/changelog/liquibase-changelog.xml
