@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://familyfinance-server.postgres.database.azure.com:5432/postgres?user=${DB_USER}&password=${DB_PASSWORD}&sslmode=require
+    url: jdbc:postgresql://familyfinance-server.postgres.database.azure.com:5432/postgres?user=${{ secrets.DB_USER }}&password=${{ secrets.DB_PASSWORD }}&sslmode=require
     driver-class-name: org.postgresql.Driver
     hikari:
       schema: family_finance
