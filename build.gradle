@@ -17,7 +17,8 @@ configurations {
 
 repositories {
     mavenCentral()
-    google()
+    uri("https://mvnrepository.com/artifact/org.liquibase/liquibase-core")
+
 }
 
 ext {
@@ -32,14 +33,14 @@ file(project.ext.liquibasePropsFile).withInputStream { props.load(it) }
 
 liquibase {
     activities {
-        main {
+        main ({
             changeLogFile props["datasource.change-log"]
             url props["datasource.url"]
             username props["datasource.username"]
             password props["datasource.password"]
             defaultSchemaName props["datasource.schema"]
             classpath "$rootDir/src/main/resources"
-        }
+        })
     }
 }
 
@@ -48,14 +49,14 @@ dependencies {
     implementation "org.springframework:spring-context"
 
     implementation "org.postgresql:postgresql:${postgresqlVersion}"
-    implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+    implementation "org.liquibase:liquibase-core:4.22.0"
     implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.0.4'
 
-    liquibaseRuntime "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
-    liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:2.1.1"
     liquibaseRuntime "org.postgresql:postgresql:${postgresqlVersion}"
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.22.0'
+    liquibaseRuntime "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

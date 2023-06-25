@@ -21,6 +21,9 @@ jobs:
         with:
           java-version: '17'
 
+      - name: Setup gradle
+        uses: gradle/gradle-build-action@v2
+
       - name: Build with gradle
         env:
           DB_USER: ${{ secrets.DB_USER }}
