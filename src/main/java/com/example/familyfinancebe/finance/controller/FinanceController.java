@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/finance")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://familyfinance.vercel.app")
 public class FinanceController {
 
     private final FinanceService financeService;
