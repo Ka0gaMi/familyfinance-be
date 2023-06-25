@@ -6,3 +6,5 @@ spring:
     url: jdbc:postgresql://familyfinance-server.postgres.database.azure.com:5432/postgres?sslmode=require
     hikari:
       schema: family_finance
+  liquibase:
+    changeLog: classpath:/db/changelog/liquibase-changelog.xml
