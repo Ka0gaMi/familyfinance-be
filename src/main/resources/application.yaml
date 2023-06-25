@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://familyfinance-server.postgres.database.azure.com:5432/postgres?sslmode=require
+    hikari:
+      schema: family_finance
