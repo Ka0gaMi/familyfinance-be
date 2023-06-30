@@ -13,8 +13,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="type_id" type="uuid">
-                <constraints nullable="false" foreignKeyName="finance_type_fk"
-                             references="types(id)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="expected_expenses_amount" type="decimal(10,2)">
                 <constraints nullable="false"/>

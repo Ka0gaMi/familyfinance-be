@@ -1,9 +1,8 @@
 spring:
   datasource:
-    username: postgres
-    password: postgres
-    url: jdbc:postgresql://localhost:5432/familyfinance
-    hikari:
-      schema: familyfinance
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: jdbc:mysql://aws.connect.psdb.cloud/familyfinance-db?sslMode=VERIFY_IDENTITY
+    driver-class-name: com.mysql.cj.jdbc.Driver
   liquibase:
     changeLog: classpath:/db/changelog/liquibase-changelog.xml

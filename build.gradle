@@ -25,22 +25,6 @@ ext {
     mybatisVersion = '3.0.1'
 }
 
-def props = new Properties()
-file(project.ext.liquibasePropsFile).withInputStream { props.load(it) }
-
-liquibase {
-    activities {
-        main ({
-            changeLogFile props["datasource.change-log"]
-            url props["datasource.url"]
-            username props["datasource.username"]
-            password props["datasource.password"]
-            defaultSchemaName props["datasource.schema"]
-            classpath "$rootDir/src/main/resources"
-        })
-    }
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.springframework:spring-context"
