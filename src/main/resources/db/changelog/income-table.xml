@@ -9,25 +9,27 @@
             <column name="id" type="uuid">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
-            <column name="date" type="varchar">
+            <column name="date" type="varchar(7)">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar">
+            <column name="expected_day" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="amount" type="currency">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="notes" type="varchar">
+            <column name="is_got" type="bit" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notes" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="expected_day" type="varchar">
-                <constraints nullable="false"/>
+            <column name="index" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="is_got" type="boolean" defaultValueBoolean="false">
-                <constraints nullable="false"/>
-            </column>
-            <column name="index" type="integer" autoIncrement="true"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

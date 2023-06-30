@@ -9,17 +9,17 @@
             <column name="id" type="uuid">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
-            <column name="date" type="varchar">
+            <column name="date" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="type_id" type="uuid">
                 <constraints nullable="false" foreignKeyName="finance_type_fk"
                              references="types(id)"/>
             </column>
-            <column name="expected_expenses_amount" type="currency">
+            <column name="expected_expenses_amount" type="decimal(10,2)">
                 <constraints nullable="false"/>
             </column>
-            <column name="actual_expenses_amount" type="currency">
+            <column name="actual_expenses_amount" type="decimal(10,2)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

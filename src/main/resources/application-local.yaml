@@ -1,7 +1,8 @@
 spring:
   datasource:
-    username: postgres
-    password: postgres
-    url: jdbc:postgresql://localhost:5432/familyfinance
     hikari:
       schema: familyfinance
+    url: jdbc:mysql://localhost:3306/familyfinance
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver

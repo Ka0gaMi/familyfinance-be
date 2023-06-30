@@ -36,6 +36,15 @@ public class FinanceController {
         }
     }
 
+    @GetMapping("/get_finance_by_id")
+    public ResponseEntity<?> getFinanceById(@RequestParam String id) {
+        try {
+            return ResponseEntity.ok(financeService.getFinanceById(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
     @PostMapping("/add_finance")
     public ResponseEntity<?> addFinance(@RequestBody FinanceDTO financeDto) {
         try {

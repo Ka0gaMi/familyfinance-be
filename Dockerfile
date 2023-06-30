@@ -1,8 +1,11 @@
+# Build stage
+FROM gradle:latest AS BUILD
+COPY . .
+RUN gradle build
+
 FROM openjdk:17.0.1
 
-ENV JAVA_ENABLE_DEBUG=${JAVA_ENABLE_DEBUG}
-
-COPY build/libs/familyfinance-*-SNAPSHOT.jar familyfinance-api.jar
+COPY --from=BUILD /home/gradle/build/libs/familyfinance-*-SNAPSHOT.jar familyfinance-api.jar
 
 EXPOSE 8080
 

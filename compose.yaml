@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  database:
-    image: 'postgres:latest'
+  db:
+    image: 'mysql:latest'
     ports:
-      - '5432:5432'
+      - '3306:3306'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: familyfinance
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=familyfinance
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
     volumes:
       - "./init.sql:/docker-entrypoint-initdb.d/1.sql"

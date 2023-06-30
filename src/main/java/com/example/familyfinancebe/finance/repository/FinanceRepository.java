@@ -9,7 +9,9 @@ import java.util.UUID;
 
 public interface FinanceRepository extends JpaRepository<Finance, UUID> {
 
-    List<Finance> getFinancesByDateOrderByType(String date);
+    @Query(value = "SELECT t.* FROM familyfinance.finance t JOIN familyfinance.types t2 ON t.type_id = t2.id" +
+            " WHERE t.date = ?1 ORDER BY t.type_id", nativeQuery = true)
+    List<Finance> getFinancesOrdered(String date);
 
     Finance getFinanceById(UUID id);
 }

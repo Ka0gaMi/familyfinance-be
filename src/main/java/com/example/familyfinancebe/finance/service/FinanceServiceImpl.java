@@ -19,12 +19,15 @@ public class FinanceServiceImpl implements FinanceService{
 
     @Override
     public List<Finance> getFinanceByDate(String date) {
-        return financeRepository.getFinancesByDateOrderByType(date);
+        return financeRepository.getFinancesOrdered(date);
     }
 
     @Override
     public List<Finance> getDefaultFinance(String date) {
-        List<Finance> defaultFinance = financeRepository.getFinancesByDateOrderByType("default");
+        List<Finance> defaultFinance = financeRepository.getFinancesOrdered("default");
+        for (Finance finance : defaultFinance) {
+            System.out.println(finance.getType());
+        }
         for (Finance finance : defaultFinance) {
             Finance newFinance = new Finance();
             newFinance.setId(UUID.randomUUID());
@@ -34,7 +37,12 @@ public class FinanceServiceImpl implements FinanceService{
             newFinance.setActualExpensesAmount(finance.getActualExpensesAmount());
             financeRepository.save(newFinance);
         }
-        return financeRepository.getFinancesByDateOrderByType(date);
+        return financeRepository.getFinancesOrdered(date);
+    }
+
+    @Override
+    public Finance getFinanceById(String id) {
+        return financeRepository.getFinanceById(UUID.fromString(id));
     }
 
     @Override

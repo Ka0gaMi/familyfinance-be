@@ -12,7 +12,6 @@
             <column name="amount" value="400" />
             <column name="notes" value="" />
             <column name="expected_day" value="1" />
-            <column name="is_got" value="false" />
         </insert>
         <insert tableName="income">
             <column name="id" value="22222222-2222-2222-2222-222222222222" />
@@ -21,7 +20,6 @@
             <column name="amount" value="150" />
             <column name="notes" value="" />
             <column name="expected_day" value="11-15" />
-            <column name="is_got" value="false" />
         </insert>
         <insert tableName="income">
             <column name="id" value="33333333-3333-3333-3333-333333333333" />
@@ -30,7 +28,6 @@
             <column name="amount" value="350" />
             <column name="notes" value="" />
             <column name="expected_day" value="16-19 ir 25" />
-            <column name="is_got" value="false" />
         </insert>
         <insert tableName="income">
             <column name="id" value="44444444-4444-4444-4444-444444444444" />
@@ -39,7 +36,6 @@
             <column name="amount" value="318.5" />
             <column name="notes" value="" />
             <column name="expected_day" value="28" />
-            <column name="is_got" value="false" />
         </insert>
         <insert tableName="income">
             <column name="id" value="55555555-5555-5555-5555-555555555555" />
@@ -48,7 +44,6 @@
             <column name="amount" value="161.01" />
             <column name="notes" value="" />
             <column name="expected_day" value="11" />
-            <column name="is_got" value="false" />
         </insert>
         <insert tableName="income">
             <column name="id" value="66666666-6666-6666-6666-666666666666" />
@@ -57,7 +52,6 @@
             <column name="amount" value="157.49" />
             <column name="notes" value="" />
             <column name="expected_day" value="11" />
-            <column name="is_got" value="false" />
         </insert>
         <insert tableName="income">
             <column name="id" value="77777777-7777-7777-7777-777777777777" />
@@ -66,7 +60,6 @@
             <column name="amount" value="105" />
             <column name="notes" value="" />
             <column name="expected_day" value="18-20" />
-            <column name="is_got" value="false" />
         </insert>
     </changeSet>
 </databaseChangeLog>

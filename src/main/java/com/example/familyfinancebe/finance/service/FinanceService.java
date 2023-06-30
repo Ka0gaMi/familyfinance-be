@@ -11,6 +11,8 @@ public interface FinanceService {
 
     List<Finance> getDefaultFinance(String date);
 
+    Finance getFinanceById(String id);
+
     void addFinance(FinanceDTO financeDto, Type type);
 
     void updateFinance(FinanceDTO financeDto, Type type);
