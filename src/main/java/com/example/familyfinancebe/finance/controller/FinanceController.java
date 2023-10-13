@@ -27,10 +27,10 @@ public class FinanceController {
         this.typeService = typeService;
     }
 
-    @GetMapping("/get_finance")
-    public ResponseEntity<?> getFinanceByDate(@RequestParam String date) {
+    @GetMapping("/get_finances")
+    public ResponseEntity<?> getFinances() {
         try {
-            return ResponseEntity.ok(financeService.getFinanceByDate(date));
+            return ResponseEntity.ok(financeService.getFinance());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
@@ -89,17 +89,16 @@ public class FinanceController {
     public ResponseEntity<?> deleteFinance(@RequestBody FinanceDTO financeDto) {
         try {
             financeService.deleteFinance(financeDto.getId());
-            typeService.deleteType(financeDto.getType().getId());
             return ResponseEntity.ok("Finance deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
 
-    @GetMapping("/get_income")
-    public ResponseEntity<?> getIncomeByDate(@RequestParam String date) {
+    @GetMapping("/get_incomes")
+    public ResponseEntity<?> getIncomes() {
         try {
-            return ResponseEntity.ok(incomeService.getIncomeByDate(date));
+            return ResponseEntity.ok(incomeService.getIncomes());
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -126,9 +125,9 @@ public class FinanceController {
     }
 
     @DeleteMapping("/delete_income")
-    public ResponseEntity<?> deleteIncome(@RequestParam String id) {
+    public ResponseEntity<?> deleteIncome(@RequestBody IncomeDTO incomeDTO) {
         try {
-            incomeService.deleteIncome(id);
+            incomeService.deleteIncome(incomeDTO.getId());
             return ResponseEntity.ok("Income deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
@@ -148,6 +147,24 @@ public class FinanceController {
     public ResponseEntity<?> getDefaultIncome(@RequestParam String date) {
         try {
             return ResponseEntity.ok(incomeService.getDefaultIncome(date));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/get_default_incomes")
+    public ResponseEntity<?> getDefaultIncomes() {
+        try {
+            return ResponseEntity.ok(incomeService.getDefaultIncomes());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/get_types")
+    public ResponseEntity<?> getTypes() {
+        try {
+            return ResponseEntity.ok(typeService.getTypes());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }

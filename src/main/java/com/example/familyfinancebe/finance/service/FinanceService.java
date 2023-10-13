@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface FinanceService {
 
-    List<Finance> getFinanceByDate(String date);
+    List<Finance> getFinance();
 
     List<Finance> getDefaultFinance(String date);
 

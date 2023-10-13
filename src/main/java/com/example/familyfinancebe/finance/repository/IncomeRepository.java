@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IncomeRepository extends JpaRepository<Income, UUID> {
-    @Query(value = "SELECT * FROM income WHERE date = ?1 ORDER BY `index`", nativeQuery = true)
-    List<Income> getIncomeByDate(String date);
+    @Query(value = "SELECT * FROM income ORDER BY `index`", nativeQuery = true)
+    List<Income> getIncomes();
+
+    @Query(value = "SELECT * FROM income WHERE date = 'default' ORDER BY `index`", nativeQuery = true)
+    List<Income> getDefaultsOrdered();
 
     Income getIncomeById(UUID id);
 }

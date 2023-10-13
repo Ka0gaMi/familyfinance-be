@@ -9,11 +9,13 @@ public interface IncomeService {
 
     void createIncome(IncomeDTO incomeDto);
 
-    List<Income> getIncomeByDate(String date);
+    List<Income> getIncomes();
 
     List<Income> getDefaultIncome(String date);
 
     void updateIncome(IncomeDTO incomeDto);
 
     void deleteIncome(String id);
+
+    List<Income> getDefaultIncomes();
 }

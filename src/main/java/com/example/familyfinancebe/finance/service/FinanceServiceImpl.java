@@ -5,6 +5,7 @@ import com.example.familyfinancebe.finance.model.*;
 import com.example.familyfinancebe.finance.repository.FinanceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,16 +19,14 @@ public class FinanceServiceImpl implements FinanceService{
     }
 
     @Override
-    public List<Finance> getFinanceByDate(String date) {
-        return financeRepository.getFinancesOrdered(date);
+    public List<Finance> getFinance() {
+        return financeRepository.getFinancesOrdered();
     }
 
     @Override
     public List<Finance> getDefaultFinance(String date) {
-        List<Finance> defaultFinance = financeRepository.getFinancesOrdered("default");
-        for (Finance finance : defaultFinance) {
-            System.out.println(finance.getType());
-        }
+        List<Finance> defaultFinance = financeRepository.getDefaultsOrdered();
+        List<Finance> financeList = new ArrayList<>(defaultFinance.size());
         for (Finance finance : defaultFinance) {
             Finance newFinance = new Finance();
             newFinance.setId(UUID.randomUUID());
@@ -36,8 +35,9 @@ public class FinanceServiceImpl implements FinanceService{
             newFinance.setExpectedExpensesAmount(finance.getExpectedExpensesAmount());
             newFinance.setActualExpensesAmount(finance.getActualExpensesAmount());
             financeRepository.save(newFinance);
+            financeList.add(newFinance);
         }
-        return financeRepository.getFinancesOrdered(date);
+        return financeList;
     }
 
     @Override

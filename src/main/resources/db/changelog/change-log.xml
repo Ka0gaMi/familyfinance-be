@@ -10,4 +10,7 @@
     <include file="insert-types.xml" relativeToChangelogFile="true"/>
     <include file="insert-finance.xml" relativeToChangelogFile="true"/>
     <include file="insert-income.xml" relativeToChangelogFile="true"/>
+    <include file="recipe-table.xml" relativeToChangelogFile="true"/>
+    <include file="ingredient-table.xml" relativeToChangelogFile="true"/>
+    <include file="recipe-ingredient-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

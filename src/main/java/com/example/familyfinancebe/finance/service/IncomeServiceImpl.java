@@ -5,6 +5,7 @@ import com.example.familyfinancebe.finance.model.Income;
 import com.example.familyfinancebe.finance.repository.IncomeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,13 +32,14 @@ public class IncomeServiceImpl implements IncomeService{
     }
 
     @Override
-    public List<Income> getIncomeByDate(String date) {
-        return incomeRepository.getIncomeByDate(date);
+    public List<Income> getIncomes() {
+        return incomeRepository.getIncomes();
     }
 
     @Override
     public List<Income> getDefaultIncome(String date) {
-        List<Income> defaultIncome = incomeRepository.getIncomeByDate("default");
+        List<Income> defaultIncome = incomeRepository.getDefaultsOrdered();
+        List<Income> incomeList = new ArrayList<>(defaultIncome.size());
         for (Income income : defaultIncome) {
             Income newIncome = new Income();
             newIncome.setId(UUID.randomUUID());
@@ -48,8 +50,9 @@ public class IncomeServiceImpl implements IncomeService{
             newIncome.setExpectedDay(income.getExpectedDay());
             newIncome.setIsGot(income.getIsGot());
             incomeRepository.save(newIncome);
+            incomeList.add(newIncome);
         }
-        return incomeRepository.getIncomeByDate(date);
+        return incomeList;
     }
 
     @Override
@@ -67,5 +70,10 @@ public class IncomeServiceImpl implements IncomeService{
     @Override
     public void deleteIncome(String id) {
         incomeRepository.deleteById(UUID.fromString(id));
+    }
+
+    @Override
+    public List<Income> getDefaultIncomes() {
+        return incomeRepository.getDefaultsOrdered();
     }
 }

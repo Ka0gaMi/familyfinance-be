@@ -4,6 +4,7 @@ import com.example.familyfinancebe.finance.model.Type;
 import com.example.familyfinancebe.finance.repository.TypeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -47,5 +48,10 @@ public class TypeServiceImpl implements TypeService{
     @Override
     public void deleteType(String id) {
         typeRepository.deleteById(UUID.fromString(id));
+    }
+
+    @Override
+    public List<Type> getTypes() {
+        return typeRepository.getTypes();
     }
 }

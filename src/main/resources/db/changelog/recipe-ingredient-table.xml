@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-recipe-ingredient-table" author="kornelijus.semenas">
+        <createTable tableName="recipe_ingredient">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="recipe_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="recipe_ingredient_recipe_id_fk"
+                             referencedTableName="recipe" referencedColumnNames="id"/>
+            </column>
+            <column name="ingredient_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="recipe_ingredient_ingredient_id_fk"
+                             referencedTableName="ingredient" referencedColumnNames="id"/>
+            </column>
+            <column name="quantity" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit" type="varchar(225)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,8 +1,8 @@
 spring:
   datasource:
     hikari:
-      schema: familyfinance
-    url: jdbc:mysql://localhost:3306/familyfinance
+      schema: familyfinance-db
+    url: jdbc:mysql://localhost:3306/familyfinance-db
     username: root
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
